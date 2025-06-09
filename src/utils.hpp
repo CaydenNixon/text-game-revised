@@ -5,7 +5,7 @@
 
 struct Utils
 {
-    static int numGen(int seed, int min, int max) // generates a random number given the save's seed and the range
+    static int num_gen(int seed, int min, int max) // generates a random number given the save's seed and the range
     {
         std::mt19937 gen(get_seed()); // primary seed initializes the generator
         gen.seed(get_seed() + seed);

@@ -14,6 +14,7 @@ public:
         run_game();
     }
     void run_game();
+    void new_game();
     std::string t_rsp();
 
 private:

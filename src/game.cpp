@@ -32,6 +32,38 @@ void Game::run_game()
         }
     }
 }
+void Game::new_game()
+{
+    bool running = true;
+    while (running)
+    {
+        std::cout << "USE CUSTOM SEED? [Y] OR [N]" << std::endl;
+        std::string c1 = t_rsp();
+        while (c1 == "Y" || c1 == "y")
+        {
+            std::cout << "INPUT YOUR CUSTOM SEED (MAXIMUM 15 DIGITS)" << std::endl;
+            std::string custom_seed = t_rsp();
+            if (custom_seed.size() > 15)
+            {
+                std::cout << "SEED IS TOO LARGE, PLEASE ";
+            }
+            else
+            {
+                int custom_iseed = std::stoi(custom_seed);
+                Utils::set_seed(custom_iseed);
+            }
+        }
+        while (c1 == "N" || c1 == "n")
+        {
+            Utils::seed_gen();
+        }
+        while (c1 != "N" || "n" || "Y" || "y")
+        {
+            std::cout << "CHOOSE A VALID OPTION" << std::endl;
+            break;
+        }
+    }
+}
 std::string Game::t_rsp()
 {
     std::string rsp;

@@ -14,13 +14,8 @@ public:
     void init_char(std::string new_name)
     {
         name = new_name;
+        roll_stats();
 
-        stat_map["str"] = stat_map["init str"];
-        stat_map["dex"] = stat_map["init dex"];
-        stat_map["con"] = stat_map["init con"];
-        stat_map["int"] = stat_map["init int"];
-        stat_map["wis"] = stat_map["init wis"];
-        stat_map["hp max"] = stat_map["init hp max"];
         stat_map["exp"] = 0;
         stat_map["exp req"] = 100;
         level = 1;
@@ -28,11 +23,11 @@ public:
     void set_stat(std::string type, float value) { stat_map[type] = value; }
     void roll_stats()
     {
-        stat_map["init str"] = Utils::numGen(Utils::get_seed(), 1, 20);
-        stat_map["init dex"] = Utils::numGen(Utils::get_seed(), 1, 20);
-        stat_map["init con"] = Utils::numGen(Utils::get_seed(), 1, 20);
-        stat_map["init int"] = Utils::numGen(Utils::get_seed(), 1, 20);
-        stat_map["init wis"] = Utils::numGen(Utils::get_seed(), 1, 20);
+        stat_map["init str"] = Utils::num_gen(Utils::get_seed(), 1, 20);
+        stat_map["init dex"] = Utils::num_gen(Utils::get_seed(), 1, 20);
+        stat_map["init con"] = Utils::num_gen(Utils::get_seed(), 1, 20);
+        stat_map["init int"] = Utils::num_gen(Utils::get_seed(), 1, 20);
+        stat_map["init wis"] = Utils::num_gen(Utils::get_seed(), 1, 20);
         stat_map["init hp max"] = 100;
     }
     void level_scaling()
@@ -50,15 +45,22 @@ public:
     }
     void level_up()
     {
-        if (stat_map["exp"] >= stat_map["exp req"])
+        bool level_loop = true;
+        while (level_loop)
         {
-            level += 1;
-            stat_map["exp"] -= stat_map["exp req"];
-            level_scaling();
-            exp_req();
-            level_up();
+            if (stat_map["exp"] >= stat_map["exp req"])
+            {
+                level += 1;
+                stat_map["exp"] -= stat_map["exp req"];
+                level_scaling();
+                exp_req();
+            }
+            else { return; }
         }
-        return;
+    }
+    float get_stat(std::string type)
+    {
+        return stat_map[type];
     }
 
 private:
