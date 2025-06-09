@@ -9,7 +9,7 @@
 class World
 {
 public:
-void init_traits();
+// void init_traits();
 void init_equipment()
 {
     world_equipment.init_equipment();

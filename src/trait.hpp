@@ -7,6 +7,7 @@
 class Trait
 {
 public:
+    Trait() = default;
     Trait(std::string name, std::string desc)
     {
         trait_name = name;
@@ -20,5 +21,5 @@ public:
 private:
     std::string trait_name;
     std::string trait_desc;
-    std::unordered_map<int, std::pair<std::string, float>> trait_bonuses;
+    std::unordered_map<int, std::pair<std::string, float>> trait_bonuses; // index, bonus name, bonus amount
 };

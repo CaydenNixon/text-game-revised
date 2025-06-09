@@ -1,3 +1,0 @@
-/home/cayden/Documents/GitHub/Testicular Cancer/build/CMakeFiles/my_program.dir
-/home/cayden/Documents/GitHub/Testicular Cancer/build/CMakeFiles/edit_cache.dir
-/home/cayden/Documents/GitHub/Testicular Cancer/build/CMakeFiles/rebuild_cache.dir

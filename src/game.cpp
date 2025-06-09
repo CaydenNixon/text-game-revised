@@ -17,8 +17,11 @@ void Game::run_game()
         }
         else if (menu1 == "2")
         {
-            // load save
-        }
+            std::cout << "WHICH SAVE WILL YOU LOAD:" << std::endl;
+            std::cout << save.save_list() << std::endl;
+            std::string save_name = t_rsp();
+            save.load_save(save_name);
+        } // inclomplete, do not use
         else if (menu1 == "3")
         {
             exit(0);
@@ -26,7 +29,6 @@ void Game::run_game()
         else
         {
             std::cout << "TYPE 1, 2, OR 3" << std::endl;
-            run_game();
         }
     }
 }

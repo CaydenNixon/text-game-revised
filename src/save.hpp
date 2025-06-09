@@ -36,6 +36,20 @@ struct Save
     {
         active_save = save_tload;
     }
+    std::string save_list() // reads and lists all filenames in a directory
+    {
+        std::string list;
+
+        for (const auto &entry : std::filesystem::directory_iterator("Saves/"))
+        {
+            if (entry.is_regular_file())
+            {
+                list = entry.path().filename().string();
+            }
+        }
+
+        return list;
+    }
 
 private:
     std::string active_save;
